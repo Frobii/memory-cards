@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import Cards from './Cards';
 
 export default function MemoryCards() {
     const [pokemon, setPokemon] = useState([]);
+    const [clickedPokemon, setClickedPokemon] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null)
 
@@ -18,7 +20,13 @@ export default function MemoryCards() {
                     }
                 }
                 const data = await Promise.all(responses.map(response => response.json()));
-                setPokemon(data)
+
+                const pokemonWithUUID = data.map((pokemon) => ({
+                    ...pokemon,
+                    uuid: uuidv4(),
+                }));
+
+                setPokemon(pokemonWithUUID)
                 setLoading(false)
             } catch (error) {
                 console.error("There's been a problem with your fetch:", error);
@@ -33,6 +41,8 @@ export default function MemoryCards() {
         <>
             <Cards
                 pokemon={pokemon}
+                clickedPokemon={clickedPokemon}
+                setClickedPokemon={setClickedPokemon}
             />
         </>
     )
