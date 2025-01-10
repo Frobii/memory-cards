@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../styles/card.css'
 
-export default function Card({
+export default function Cards({
     pokemon,
 }) {
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Card from './Card';
+import Cards from './Cards';
 
 export default function MemoryCards() {
     const [pokemon, setPokemon] = useState([]);
@@ -31,7 +31,7 @@ export default function MemoryCards() {
 
     return (
         <>
-            <Card
+            <Cards
                 pokemon={pokemon}
             />
         </>
