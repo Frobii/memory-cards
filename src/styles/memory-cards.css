@@ -1,0 +1,14 @@
+.loading,
+.error {
+    width: 100vw;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.loading {
+    color: white;
+}
+
+.error {
+    color: red;
+}
