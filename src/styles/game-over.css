@@ -6,6 +6,11 @@
     padding-top: 2rem;
 }
 
+.game-over,
+.game-won {
+    font-size: 2rem;
+}
+
 .game-won {
     color: green;
 }
