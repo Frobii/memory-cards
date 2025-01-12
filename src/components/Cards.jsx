@@ -23,11 +23,21 @@ export default function Cards({
         }
     }
 
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    const shuffledPokemon = [...pokemon];
+    shuffleArray(shuffledPokemon);
+
     return (
         <>
             <div className='cards-container'>
-                {pokemon.length > 0 &&
-                    pokemon.map((pokemon) => {
+                {shuffledPokemon.length > 0 &&
+                    shuffledPokemon.map((pokemon) => {
                         return (
                             <div
                                 className='pokemon-card'
