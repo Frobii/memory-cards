@@ -1,0 +1,29 @@
+.game-over,
+.game-won,
+.restart-container {
+    width: 100vw;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.game-won {
+    color: green;
+}
+
+.game-over {
+    color: red;
+}
+
+.restart-text {
+    color: white;
+}
+
+.mdi-refresh {
+    color: white;
+    transition: transform 0.2s ease-out;
+}
+
+.mdi-refresh:hover {
+    cursor: pointer;
+    transform: rotateZ(180deg);
+}

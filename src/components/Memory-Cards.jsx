@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import Cards from './Cards';
-import '../styles/memory-cards.css'
+import GameOver from './GameOver';
+import '../styles/memory-cards.css';
 
 export default function MemoryCards() {
     const [pokemon, setPokemon] = useState([]);
@@ -9,6 +10,7 @@ export default function MemoryCards() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [gameOver, setGameOver] = useState(false);
+    const [gameWon, setGameWon] = useState(false);
 
     useEffect(() => {
         async function fetchPokemon() {
@@ -41,7 +43,14 @@ export default function MemoryCards() {
 
     return (
         <>
-            {error ? (
+            {gameOver ? (
+                <GameOver
+                    setClickedPokemon={setClickedPokemon}
+                    setGameOver={setGameOver}
+                    gameWon={gameWon}
+                    setGameWon={setGameWon}
+                />
+            ) : error ? (
                 <div className="error">
                     <p className="error-text">Error loading Pokémon data: {error}</p>
                 </div>
@@ -55,6 +64,7 @@ export default function MemoryCards() {
                         clickedPokemon={clickedPokemon}
                         setClickedPokemon={setClickedPokemon}
                         setGameOver={setGameOver}
+                        setGameWon={setGameWon}
                     />
                 </>
             )}
