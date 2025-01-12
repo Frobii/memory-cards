@@ -8,6 +8,7 @@ export default function MemoryCards() {
     const [clickedPokemon, setClickedPokemon] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [gameOver, setGameOver] = useState(false);
 
     useEffect(() => {
         async function fetchPokemon() {
@@ -40,23 +41,23 @@ export default function MemoryCards() {
 
     return (
         <>
-            {error ? <div className="error">Error loading Pokémon data</div>
-                :
+            {error ? (
+                <div className="error">
+                    <p className="error-text">Error loading Pokémon data: {error}</p>
+                </div>
+            ) : loading ? (
+                <div className="loading">Loading...</div>
+            ) : (
                 <>
-                    {loading ?
-                        <div className="loading">Loading...</div>
-                        :
-                        <>
-                            <h1>Pokémem</h1>
-                            <Cards
-                                pokemon={pokemon}
-                                clickedPokemon={clickedPokemon}
-                                setClickedPokemon={setClickedPokemon}
-                            />
-                        </>
-                    }
+                    <h1>Pokémem</h1>
+                    <Cards
+                        pokemon={pokemon}
+                        clickedPokemon={clickedPokemon}
+                        setClickedPokemon={setClickedPokemon}
+                        setGameOver={setGameOver}
+                    />
                 </>
-            }
+            )}
         </>
     )
 }
