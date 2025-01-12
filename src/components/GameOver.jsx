@@ -18,9 +18,9 @@ export default function GameOver({
     return (
         <>
             {gameWon ?
-                <h2 className="game-won">You won!</h2>
+                <p className="game-won">You won!</p>
                 :
-                <h2 className="game-over">Game Over</h2>
+                <p className="game-over">Game Over</p>
             }
             <div className="restart-container">
                 <p className="restart-text">Would you like to restart the game?</p>
